@@ -1,9 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./Contact.css";
+import { Link } from "react-router-dom";
 
-function Contact() {
+const Fetch = () => {
+  const endPoint = "https://api.github.com/users";
+  const [gitIt, setGit] = useState([]);
+
+  const getGit = () => {
+    axios.get(endPoint).then((response) => {
+      setGit(response.data);
+    });
+  };
+
+  useEffect(() => {
+    getGit();
+  }, []);
+
   return (
-    <div>Contact</div>
-  )
-}
+    <div className="p-3 bg-black text-black w-full">
+      <div className="flex gap-7 p-3 ease-in delay-150">
+        {gitIt.map((element) => (
+          <Link
+            key={element.id}
+            to={`/contact/details/${element.id}`}
+            className="link"
+          >
+            <div className="e-card playing">
+              <div className="image"></div>
+              <div className="wave"></div>
+              <div className="wave"></div>
+              <div className="wave"></div>
+              <div className="infotop">
+                <img
+                  src={element.avatar_url}
+                  alt=""
+                  width={100}
+                  className="rounded-full mx-auto"
+                />
+                <br />
+                <h1>{element.login}</h1>
+                <div className="name">
+                  <h3>Type: {element.type}</h3>
+                  <h3>ID: {element.id}</h3>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-export default Contact
+export default Fetch;

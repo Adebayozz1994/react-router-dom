@@ -24,7 +24,7 @@ function Navbar() {
             {/* <img src={logo} className='img' alt="" /> */}
           </label>
           <ul>
-            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/service">Service</Link></li>
             <li><Link to="/About">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
