@@ -11,6 +11,8 @@ import Error from './components/Error';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Tenary from './components/Formik';
+
 function App() {
   return (
     <>
@@ -21,6 +23,10 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Navigate to ="/" />} />
           <Route path='/service' element={<Service />} />
+
+          <Route path='/formik' element={<Tenary />} />
+           
+
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/contact/details/:id' element={<ContactDetails />} />
